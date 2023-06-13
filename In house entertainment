@@ -1,0 +1,83 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Structure to represent a movie
+typedef struct {
+    char title[50];
+    char genre[20];
+    int duration;
+} Movie;
+
+// Structure to represent a sports event
+typedef struct {
+    char name[50];
+    char location[50];
+    char date[20];
+} SportsEvent;
+
+// Structure to represent a food item
+typedef struct {
+    char name[50];
+    double price;
+} FoodItem;
+
+// Function to display the available movie options
+void displayMovies(Movie* movies, int numMovies) {
+    printf("------ Available Movies ------\n");
+    for (int i = 0; i < numMovies; i++) {
+        printf("Title: %s\n", movies[i].title);
+        printf("Genre: %s\n", movies[i].genre);
+        printf("Duration: %d minutes\n", movies[i].duration);
+        printf("-----------------------------\n");
+    }
+}
+
+// Function to display the available sports events
+void displaySportsEvents(SportsEvent* events, int numEvents) {
+    printf("------ Available Sports Events ------\n");
+    for (int i = 0; i < numEvents; i++) {
+        printf("Name: %s\n", events[i].name);
+        printf("Location: %s\n", events[i].location);
+        printf("Date: %s\n", events[i].date);
+        printf("------------------------------------\n");
+    }
+}
+
+// Function to display the available food items
+void displayFoodItems(FoodItem* foodItems, int numItems) {
+    printf("------ Available Food Items ------\n");
+    for (int i = 0; i < numItems; i++) {
+        printf("Name: %s\n", foodItems[i].name);
+        printf("Price: $%.2lf\n", foodItems[i].price);
+        printf("---------------------------------\n");
+    }
+}
+
+int main() {
+    // Sample data for movies
+    Movie movies[3] = {
+        {"Movie 1", "Action", 120},
+        {"Movie 2", "Comedy", 90},
+        {"Movie 3", "Drama", 150}
+    };
+
+    // Sample data for sports events
+    SportsEvent sportsEvents[2] = {
+        {"Football Match", "Stadium A", "2023-06-15"},
+        {"Basketball Game", "Arena B", "2023-06-16"}
+    };
+
+    // Sample data for food items
+    FoodItem foodItems[3] = {
+        {"Burger", 5.99},
+        {"Pizza", 8.99},
+        {"Sandwich", 4.99}
+    };
+
+    // Display the available options
+    displayMovies(movies, 3);
+    displaySportsEvents(sportsEvents, 2);
+    displayFoodItems(foodItems, 3);
+
+    return 0;
+}
