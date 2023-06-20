@@ -1,0 +1,23 @@
+Non-functional requirements specify how a system should behave or perform rather than describing specific features. Here are some non-functional requirements for the given program:
+
+1. Performance: The program should respond quickly to user interactions, such as selecting options or entering information. It should not have noticeable delays or lags.
+
+2. User Interface: The program should have a user-friendly interface that is easy to navigate and understand. It should provide clear instructions and feedback to the user.
+
+3. Reliability: The program should be robust and reliable, handling errors and exceptions gracefully. It should not crash or produce unexpected results when faced with invalid input or exceptional conditions.
+
+4. Security: The program should protect sensitive information, such as mobile numbers and transaction details. It should implement appropriate security measures, such as data encryption and access controls, to prevent unauthorized access or data breaches.
+
+5. Scalability: The program should be able to handle a large number of concurrent users and transactions without significant degradation in performance. It should scale well as the number of users or transactions increases.
+
+6. Maintainability: The program's code should be well-structured, modular, and easy to maintain. It should follow coding best practices, use meaningful variable and function names, and provide clear documentation for future reference.
+
+7. Portability: The program should be able to run on different platforms and operating systems without significant modifications. It should not rely on platform-specific features or dependencies that limit its portability.
+
+8. Compatibility: The program should be compatible with different versions of the C programming language and related libraries. It should not depend on deprecated or obsolete features that may cause compatibility issues.
+
+9. Usability: The program should be intuitive and easy to use for both regular users and administrators. It should minimize the learning curve and provide helpful prompts or instructions when needed.
+
+10. Error Handling: The program should handle errors and exceptions gracefully, providing informative error messages to the user. It should log any errors or exceptions for troubleshooting and debugging purposes.
+
+These are just some examples of non-functional requirements. Depending on the specific needs and constraints of the program, additional requirements may be necessary.
