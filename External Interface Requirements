@@ -1,0 +1,30 @@
+The provided code appears to be a program for a movie ticket booking system. Based on the code, the following are the external interface requirements for the program:
+
+1. User Interface:
+   - The program provides a menu-based user interface to interact with the user.
+   - The menu options are displayed using printf statements.
+   - The user's choice is read using scanf.
+
+2. Console Output:
+   - The program displays various messages and prompts on the console using printf statements.
+   - It shows information about the available movies, ticket prices, and seat availability.
+   - It generates a bill with booking details and displays it to the user.
+
+3. Console Input:
+   - The program reads user input using scanf statements to get the user's choice, name, mobile number, and number of seats to book.
+   - It also reads input to select movie options and row preferences.
+
+4. File Handling:
+   - The program uses file handling to read and write data.
+   - It reads movie data from a file named "data.txt" to display information about the available movies.
+   - It appends transaction data to a file named "OldTransaction.txt" to store the details of booked tickets.
+
+5. External Libraries:
+   - The program includes external libraries using #include statements:
+     - stdio.h: for standard input/output functions.
+     - stdlib.h: for standard library functions like exit().
+     - string.h: for string manipulation functions.
+     - conio.h: for console input/output functions (specific to Windows).
+     - windows.h: for Windows API functions (specific to Windows).
+
+Please note that the code snippet provided is incomplete, and the complete functionality and implementation of the program cannot be determined from the given code alone.
