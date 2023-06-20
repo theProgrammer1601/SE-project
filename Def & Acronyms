@@ -1,0 +1,34 @@
+Definitions and Acronyms used in the provided program:
+
+1. `stdio.h`: It is a header file in C programming that stands for "standard input-output header". It contains functions for input and output operations, such as `printf` and `scanf`.
+
+2. `stdlib.h`: It is a header file in C programming that stands for "standard library". It provides general-purpose functions, such as memory allocation (`malloc`, `calloc`), process control (`exit`), and others.
+
+3. `string.h`: It is a header file in C programming that stands for "string header". It provides functions for manipulating strings, such as string copying (`strcpy`, `strncpy`), string comparison (`strcmp`, `strncmp`), and others.
+
+4. `conio.h`: It is a header file in C programming that stands for "console input-output header". It provides functions for console input and output operations, such as `getch` and `clrscr` (clear screen).
+
+5. `windows.h`: It is a header file in C programming specific to the Windows operating system. It provides functions and macros for Windows API (Application Programming Interface), including GUI (Graphical User Interface) functions.
+
+6. `struct book`: It is a structure definition representing a book. It has the following members:
+   - `name`: A character array to store the name of the book.
+   - `date`: A character array to store the release date of the book.
+   - `r1`, `r2`, `r3`, `balcony`: Integer variables to store the ticket prices for different rows and balcony seats.
+
+7. `In_house_Ent()`: A function declaration for In-House Entertainment. The definition of this function is not provided in the given code snippet.
+
+8. `Book_Ticket()`: A function declaration for booking tickets. The definition of this function is provided in the given code snippet.
+
+9. `View_Movie()`: A function declaration for viewing now playing movie. The definition of this function is provided in the given code snippet.
+
+10. `Add_Movie()`: A function declaration for inserting a new movie. The definition of this function is not provided in the given code snippet.
+
+11. `Delete_Movie()`: A function declaration for deleting a now playing movie. The definition of this function is not provided in the given code snippet.
+
+12. `Old_Transactions()`: A function declaration for viewing old records of booked tickets. The definition of this function is not provided in the given code snippet.
+
+13. `Delete_Transactions()`: A function declaration for deleting all transactions. The definition of this function is not provided in the given code snippet.
+
+14. `main()`: The main function of the program where the execution starts. It contains a menu-driven loop to interact with the user and call different functions based on the user's choice.
+
+These are the definitions and acronyms used in the provided program.
