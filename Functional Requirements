@@ -1,0 +1,19 @@
+Based on the provided code, it seems like you are developing a movie ticket booking system. Here are the functional requirements for the program:
+
+1. Book Tickets: Allow users to book movie tickets by selecting the movie, entering their details (name and mobile number), and choosing the number of seats and seating preferences (row).
+
+2. View Now Playing Movie: Display the details of the currently playing movie, including the movie name, release date, and ticket pricing for different rows.
+
+3. Add New Movie (Admin Only): Allow an admin user to add a new movie to the system by entering the movie name, release date, and ticket pricing for different rows.
+
+4. Delete Now Playing Movie (Admin Only): Allow an admin user to delete the currently playing movie from the system.
+
+5. In-House Entertainment: Provide in-house entertainment options for users.
+
+6. View All Transactions (Admin Only): Allow an admin user to view all the past transactions, including the details of the customers, movie name, row, number of seats, and total amount.
+
+7. Delete All Transactions (Admin Only): Allow an admin user to delete all the past transactions.
+
+8. Exit: Allow users to exit the program.
+
+Note: It appears that the code provided is incomplete and there might be some missing function definitions. Make sure to implement those functions and handle user inputs accordingly.
