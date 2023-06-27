@@ -21,8 +21,6 @@ struct book
 }b;
 
 
-
-
 void In_house_Ent();// for In_House Entertainment
 
 void Book_Ticket(); //for booking tickets
@@ -38,20 +36,13 @@ void Old_Transactions(); //for viewing old records of booked tickets
 void Delete_Transactions(); //for deleting all transactions
 
 
-
 void main()
 
 {
-
-
-
     int ch;
-
     do
-
     {
-
-        //system("cls");
+      //system("cls");
 
         printf("\n||=======================================================================||");
 
@@ -102,16 +93,12 @@ void main()
         scanf("%d",&ch);
 
         switch (ch)
-
-        {
-
+       {
             case 1 :
 
                 Book_Ticket();
 
                 break;
-
-
 
             case 2:
 
@@ -119,15 +106,11 @@ void main()
 
                 break;
 
-
-
             case 3:
 
                 Add_Movie();
 
                 break;
-
-
 
             case 4:
 
@@ -135,15 +118,11 @@ void main()
 
                 break;
 
-
-
-                case 5:
+            case 5:
 
                 In_house_Ent();
 
                 break;
-
-
 
             case 6:
 
@@ -151,15 +130,11 @@ void main()
 
                 break;
 
-
-
             case 7:
 
                 Delete_Transactions();
 
                 break;
-
-
 
             case 8:
 
@@ -167,27 +142,18 @@ void main()
 
                 exit(0);
 
-
-
             default:
 
                 printf("\nWrong choice!!!\nTry Again!!!");
 
                 break;
-
         }
-
     }
 
     while(ch!=8);
-
 }
 
-
-
-
 void Book_Ticket()
-
 {
 
     system("color 30");
@@ -209,9 +175,7 @@ void Book_Ticket()
     fp=fopen("data.txt","r");
 
     if(fp==NULL)
-
     {
-
         printf("file does not found!");
 
         exit(1);
@@ -219,7 +183,6 @@ void Book_Ticket()
     }
 
     else if(ch=fgetc(fp)==EOF)
-
     {
 
         printf("\nNo Movie is available to book right now! Check after few days!!!");
@@ -229,9 +192,7 @@ void Book_Ticket()
     }
 
     else
-
     {
-
         system("cls");
 
         /*printf("================ Now Playing =====================");
@@ -271,9 +232,7 @@ void Book_Ticket()
         printf("\n==================================================");
 
     }
-
     if(s1==0&&s2==0&&s3==0&&s4==0)
-
     {
 
         printf("\nThe seats are full! Visit after few days...\n\n");
@@ -289,7 +248,6 @@ void Book_Ticket()
     fclose(fp);
 
     choose:
-
     {
 
         fp=fopen("data.txt","r");
@@ -303,7 +261,6 @@ void Book_Ticket()
         scanf("%s",&choice);
 
         if((choice=='y')||(choice=='Y'))
-
         {
 
             printf("\n***Fill Deatails***");
@@ -321,41 +278,30 @@ void Book_Ticket()
                 //printf("\n%s %s",name1,name2);
 
                 for(i=0;i<strlen(name1);i++)
-
                 {
-
                     int j=name1[i];
 
                     if((j>=97 && j<=122) || (j>=65 && j<=90) || (j==32 && j==92))
-
                     {
-
                         //printf("\n%d",name1[i]);
 
                         continue;
-
                     }
 
                     else
-
                     {
-
                         printf("\nFirst name is invalid! Enter alphabets only!!!");
 
                         goto name;
 
                     }
-
                 }
-
                 for(i=0;i<strlen(name2);i++)
-
                 {
 
                     k=name2[i];
 
                     if((k>=97 &&k <=122) || (k>=65 && k<=90) || (k==32 && k==92))
-
                     {
 
                         continue;
@@ -363,18 +309,13 @@ void Book_Ticket()
                     }
 
                     else
-
                     {
 
                         printf("\nLast name invalid! Enter alphabets only!!!");
 
                         goto name;
-
                     }
-
                 }
-
-
 
             next:
 
@@ -385,31 +326,22 @@ void Book_Ticket()
                 scanf("%lld",&mobile);
 
                 if(mobile<=7000000000)
-
                 {
-
                     printf("\nInvalid mobile number!!!\n");
 
                     goto next;
 
                 }
-
                 else if(mobile>9999999999)
-
                 {
-
                     printf("\nInvalid mobile number!!!\n");
 
                     goto next;
-
                 }
 
                 else if(mobile>=7000000000 && mobile<=9999999999)
-
                 {
-
-                    goto seats;
-
+                   goto seats;
                 }
 
             seats:
@@ -437,13 +369,10 @@ void Book_Ticket()
                 row=b.balcony;
 
                 else
-
-                {
-
+               {
                     printf("\nWrong Choice!!!");
 
                     goto seats;
-
                 }
 
             fp=fopen("data.txt","r");
@@ -459,21 +388,16 @@ void Book_Ticket()
             scanf("%d",&total_seat);
 
             if(total_seat==0)
-
             {
 
                 printf("\nNumber of seats should not be 0...");
 
                 goto enter;
-
             }
 
             else if(temp_row==1)
-
             {
-
                 /*if(s1==0)
-
                 {
 
                     printf("\nRow 1 to 4 is full!!!");
@@ -1639,7 +1563,6 @@ void Delete_Transactions()
                 fp = fopen("OldTransaction.txt","w");
 
                 if(fp == NULL)
-
                 {
 
                     printf("file does not found!");
@@ -1649,7 +1572,6 @@ void Delete_Transactions()
                 }
 
                 else
-
                 {
 
                     printf("\nDeleting old transactions");
@@ -1675,16 +1597,12 @@ void Delete_Transactions()
                     main();
 
                 }
-
             }
 
             else
-
             goto login;
-
         }
 
     fclose(fp);
-
 }
 
