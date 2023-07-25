@@ -1,0 +1,291 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_MOVIES 10
+#define MAX_SPORTS 5
+#define MAX_FOOD_ITEMS 5
+#define MAX_USERS 10
+#define MAX_USER_NAME 20
+
+typedef struct {
+    char name[50];
+    int time;
+    int date;
+    int seats;
+    int payment;
+} Transaction;
+
+typedef struct {
+    char name[MAX_MOVIES][50];
+    int num_movies;
+    Transaction transaction_history[MAX_MOVIES];
+    int num_transactions;
+} MovieTicketBooking;
+
+typedef struct {
+    char name[MAX_SPORTS][50];
+    int num_sports;
+} InHouseEntertainment;
+
+typedef struct {
+    char username[MAX_USER_NAME];
+    MovieTicketBooking movie_booking;
+    InHouseEntertainment inhouse_entertainment;
+} User;
+
+typedef struct {
+    User users[MAX_USERS];
+    int num_users;
+} App;
+
+void initTransaction(Transaction *transaction) {
+    transaction->name[0] = '\0';
+    transaction->time = 0;
+    transaction->date = 0;
+    transaction->seats = 0;
+    transaction->payment = 0;
+}
+
+void initMovieTicketBooking(MovieTicketBooking *mtb) {
+    mtb->num_movies = 0;
+    mtb->num_transactions = 0;
+}
+
+void addMovie(MovieTicketBooking *mtb, const char *movie_name) {
+    if (mtb->num_movies < MAX_MOVIES) {
+        strcpy(mtb->name[mtb->num_movies], movie_name);
+        mtb->num_movies++;
+        printf("%s added to movie list.\n", movie_name);
+    } else {
+        printf("Movie list is full. Cannot add more movies.\n");
+    }
+}
+
+void deleteMovie(MovieTicketBooking *mtb, const char *movie_name) {
+    int i;
+    for (i = 0; i < mtb->num_movies; i++) {
+        if (strcmp(mtb->name[i], movie_name) == 0) {
+            strcpy(mtb->name[i], mtb->name[mtb->num_movies - 1]);
+            mtb->num_movies--;
+            printf("%s removed from movie list.\n", movie_name);
+            return;
+        }
+    }
+    printf("%s not found in movie list.\n", movie_name);
+}
+
+void showMovies(MovieTicketBooking *mtb) {
+    printf("Available Movies:\n");
+    for (int i = 0; i < mtb->num_movies; i++) {
+        printf("%d. %s\n", i + 1, mtb->name[i]);
+    }
+}
+
+void bookTicket(MovieTicketBooking *mtb) {
+    if (mtb->num_movies == 0) {
+        printf("No movies available for booking.\n");
+        return;
+    }
+
+    Transaction *transaction = &mtb->transaction_history[mtb->num_transactions];
+    initTransaction(transaction);
+
+    showMovies(mtb);
+
+    printf("Select a movie (1-%d): ", mtb->num_movies);
+    int selectedMovieIndex;
+    scanf("%d", &selectedMovieIndex);
+
+    if (selectedMovieIndex < 1 || selectedMovieIndex > mtb->num_movies) {
+        printf("Invalid movie selection.\n");
+        return;
+    }
+
+    strcpy(transaction->name, mtb->name[selectedMovieIndex - 1]);
+
+    printf("Select time: ");
+    scanf("%d", &transaction->time);
+
+    printf("Select date: ");
+    scanf("%d", &transaction->date);
+
+    printf("Select seats: ");
+    scanf("%d", &transaction->seats);
+
+    printf("Enter payment details: ");
+    scanf("%d", &transaction->payment);
+
+    mtb->num_transactions++;
+
+    printf("Ticket booked successfully!\n");
+}
+
+void initInHouseEntertainment(InHouseEntertainment *ihe) {
+    ihe->num_sports = 0;
+}
+
+void addSport(InHouseEntertainment *ihe, const char *sport_name) {
+    if (ihe->num_sports < MAX_SPORTS) {
+        strcpy(ihe->name[ihe->num_sports], sport_name);
+        ihe->num_sports++;
+        printf("%s added to sports list.\n", sport_name);
+    } else {
+        printf("Sports list is full. Cannot add more sports.\n");
+    }
+}
+
+void deleteSport(InHouseEntertainment *ihe, const char *sport_name) {
+    int i;
+    for (i = 0; i < ihe->num_sports; i++) {
+        if (strcmp(ihe->name[i], sport_name) == 0) {
+            strcpy(ihe->name[i], ihe->name[ihe->num_sports - 1]);
+            ihe->num_sports--;
+            printf("%s removed from sports list.\n", sport_name);
+            return;
+        }
+    }
+    printf("%s not found in sports list.\n", sport_name);
+}
+
+void showSports(InHouseEntertainment *ihe) {
+    printf("Available Sports:\n");
+    for (int i = 0; i < ihe->num_sports; i++) {
+        printf("%d. %s\n", i + 1, ihe->name[i]);
+    }
+}
+
+void createUser(User *user, const char *username) {
+    strcpy(user->username, username);
+    initMovieTicketBooking(&user->movie_booking);
+    initInHouseEntertainment(&user->inhouse_entertainment);
+}
+
+void addUser(App *app, const char *username) {
+    if (app->num_users < MAX_USERS) {
+        createUser(&app->users[app->num_users], username);
+        app->num_users++;
+        printf("%s added to the app.\n", username);
+    } else {
+        printf("Maximum user limit reached. Cannot add more users.\n");
+    }
+}
+
+int findUser(App *app, const char *username) {
+    for (int i = 0; i < app->num_users; i++) {
+        if (strcmp(app->users[i].username, username) == 0) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+void showAppOptions() {
+    printf("Choose an option:\n");
+    printf("1. Movie Ticket Booking\n");
+    printf("2. Inhouse Entertainment\n");
+}
+
+void showUserOptions() {
+    printf("Choose an option:\n");
+    printf("1. Add Movie\n");
+    printf("2. Delete Movie\n");
+    printf("3. Show Movies\n");
+  }
+
+void showAdminOptions() {
+    printf("Choose an option:\n");
+    printf("1. Add Movie\n");
+    printf("2. Delete Movie\n");
+    printf("3. Add Sport\n");
+    printf("4. Delete Sport\n");
+    printf("5. Show Movies\n");
+    printf("6. Show Sports\n");
+}
+
+void showMenu(App *app, int user_index) {
+    char option[10];
+    while (1) {
+        if (strcmp(app->users[user_index].username, "ADMIN") == 0) {
+            showAdminOptions();
+        } else {
+            showUserOptions();
+        }
+        printf("0. Go back\n");
+        printf("Enter option: ");
+        scanf("%s", option);
+
+        if (strcmp(option, "0") == 0) {
+            return;
+        } else if (strcmp(option, "1") == 0) {
+            char movie_name[50];
+            printf("Enter movie name: ");
+            scanf("%s", movie_name);
+            if (strcmp(app->users[user_index].username, "ADMIN") == 0) {
+                addMovie(&app->users[user_index].inhouse_entertainment, movie_name);
+            } else {
+                addMovie(&app->users[user_index].movie_booking, movie_name);
+            }
+        } else if (strcmp(option, "2") == 0) {
+            char movie_name[50];
+            printf("Enter movie name: ");
+            scanf("%s", movie_name);
+            if (strcmp(app->users[user_index].username, "ADMIN") == 0) {
+                deleteMovie(&app->users[user_index].inhouse_entertainment, movie_name);
+            } else {
+                deleteMovie(&app->users[user_index].movie_booking, movie_name);
+            }
+        } else if (strcmp(option, "3") == 0) {
+            if (strcmp(app->users[user_index].username, "ADMIN") == 0) {
+                showMovies(&app->users[user_index].inhouse_entertainment);
+            } else {
+                showMovies(&app->users[user_index].movie_booking);
+            }
+        } else {
+            printf("Invalid option. Please try again.\n");
+        }
+    }
+}
+
+int main() {
+    App app;
+    app.num_users = 0;
+
+    while (1) {
+        char user_type[10];
+        char app_option[10];
+
+        printf("Who is using this app (USER or ADMIN)? ");
+        scanf("%s", user_type);
+
+        if (strcmp(user_type, "USER") == 0 || strcmp(user_type, "ADMIN") == 0) {
+            int user_index = findUser(&app, user_type);
+
+            if (user_index == -1) {
+                addUser(&app, user_type);
+                user_index = app.num_users - 1;
+            }
+
+            while (1) {
+                showAppOptions();
+                printf("0. Exit\n");
+                printf("Enter option: ");
+                scanf("%s", app_option);
+
+                if (strcmp(app_option, "0") == 0) {
+                    break;
+                } else if (strcmp(app_option, "1") == 0) {
+                    showMenu(&app, user_index);
+                } else if (strcmp(app_option, "2") == 0) {
+                    showMenu(&app, user_index);
+                } else {
+                    printf("Invalid option. Please try again.\n");
+                }
+            }
+        } else {
+            printf("Invalid user type. Please try again.\n");
+        }
+    }
+
+    return 0;
+}
