@@ -668,7 +668,12 @@ int ch;
     };
 do
 {
-printf("jsalh");
+        printf("\n||=======================================================================||");
+        printf("\n||                                                                       ||");
+        printf("\n||                Welcome to IN-House Entertainment                      ||");
+        printf("\n||                                                                       ||");
+        printf("\n||=======================================================================||");
+        printf("\nEnter your choice\n");
 scanf("%d",&ch);
 switch(ch)
 {
